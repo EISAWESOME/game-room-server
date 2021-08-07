@@ -1,0 +1,23 @@
+{
+  "name": "room-server",
+  "version": "1.0.0",
+  "description": "Game Room server",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "debug": "nodemon --inspect server.js"
+  },
+  "author": "Clément S",
+  "license": "ISC",
+  "dependencies": {
+    "bunyan": "^1.8.15",
+    "hash-sum": "^2.0.0",
+    "node-cache": "^5.1.2",
+    "restify": "^8.5.1",
+    "restify-cors-middleware": "^1.1.1",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0"
+  }
+}
