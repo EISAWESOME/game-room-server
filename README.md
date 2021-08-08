@@ -18,3 +18,17 @@ Install everything
 
 Run it
 > npm run debug
+
+
+---
+
+## TODO
+
+- Code d'erreur retour API + doc
+- Config : donner le possibilité d'empecher un utilisateur d'être dans deux room d'un même jeu
+- Service qui supprime les rooms vide après un certain temps
+- Service qui expulse les utilisateurs inactifs
+- Ajouter une notion de "Room ready" par rapport aux conditions du ruleset 
+- Tests
+
+
