@@ -39,7 +39,7 @@ angular.module('TestApp', ['ngMaterial', 'ngMessages']).controller("ctrl", funct
             if (res.data && Object.keys(res.data).length > 0) {
 
                 $scope.rooms = [];
-                for(const [key, value] of Object.entries(res.data)) {
+                for(const [, value] of Object.entries(res.data)) {
                     $scope.rooms.push(value);
 
                 }
