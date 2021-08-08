@@ -21,7 +21,10 @@ angular.module('TestApp', ['ngMaterial', 'ngMessages']).controller("ctrl", funct
     };
 
     $scope.create = () => {
-        $http.post(SERVER_URL + "/create", $scope.user).then(() => {
+        $http.post(SERVER_URL + "/create", {
+            gameId: 1,
+            user: $scope.user
+        }).then(() => {
 
             $scope.list();
         })
@@ -29,16 +32,18 @@ angular.module('TestApp', ['ngMaterial', 'ngMessages']).controller("ctrl", funct
 
     $scope.rooms = [];
     $scope.list = () => {
-        $http.get(SERVER_URL + "/list").then((res) => {
-            $scope.rooms = res.data.map(r => {
-                return {
-                    id: r
-                }
-            });
+        $http.get(SERVER_URL + "/list?details=true").then((res) => {
 
-            $scope.rooms.forEach((r) => {
-                $scope.details(r);
-            })
+            if (res.data && Object.keys(res.data).length > 0) {
+
+                $scope.rooms = [];
+                for(const [key, value] of Object.entries(res.data)) {
+                    $scope.rooms.push(value);
+
+                }
+
+            }
+
         })
 
     }
@@ -48,8 +53,8 @@ angular.module('TestApp', ['ngMaterial', 'ngMessages']).controller("ctrl", funct
         let id = room.id.replace("ROOM_", '');
 
         $http.post(SERVER_URL + "/join", {
-            roomId : id,
-            users : [$scope.user]
+            roomId: id,
+            users: [$scope.user]
         }).then(() => {
 
             $scope.list();

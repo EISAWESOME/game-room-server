@@ -39,7 +39,7 @@ try {
     server.use(restify.plugins.queryParser());
 
     require('./routes/Hello.js')(server, serverCache);
-    require('./routes/Create.js')(server, serverCache);
+    require('./routes/Create.js')(server, serverCache, config);
     require('./routes/Join.js')(server, serverCache);
     require('./routes/Details.js')(server, serverCache);
 

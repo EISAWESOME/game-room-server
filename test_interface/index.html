@@ -48,8 +48,16 @@
                     {{r.id}}
                 </div>
 
-                <div class="button" ng-click="details(r)">
-                    Plus de detail
+                <div ng-show="r.ruleset">
+
+                    <div>
+                        {{r.ruleset.gameName}}
+                    </div>
+    
+                    <div>
+                        {{r.ruleset.minRoomCapacity}} à {{r.ruleset.maxRoomCapacity}} joueurs
+                    </div>
+    
                 </div>
 
                 <div class="button" ng-click="join(r)">
@@ -58,15 +66,13 @@
 
             </div>
 
-            <div ng-show="r.details">
-                {{r.details.users.length}} user(s) :
-                <div ng-repeat=" u in r.details.users">
+            <div ng-show="r.users">
+                {{r.users.length}} user(s) :
+                <div ng-repeat=" u in r.users">
                     {{u.name}}
                 </div>
 
             </div>
-
-
         </div>
 
     </div>

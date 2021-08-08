@@ -1,13 +1,12 @@
 'use strict';
 
-const config = require("../config.json")
 const Room = require('../classes/Room');
 const User = require('../classes/User');
 const {
     v4: uuidv4
 } = require('uuid');
 const sum = require('hash-sum');
-const handler = function Create(server, cache) {
+const handler = function Create(server, cache, config) {
     server.post('/create', function (req, res, next) {
 
         let body = req.params;
@@ -19,9 +18,8 @@ const handler = function Create(server, cache) {
             let gameRuleset = config.rulesets.find(rs => rs.gameId === gameId);
 
             if (gameRuleset) {
-                // Crée la room avec le user qui a demandé la creation
 
-               
+                // Crée la room avec le user qui a demandé la creation
                 let room = new Room(sum(uuidv4()), gameRuleset, []);
 
                  // On verifie si le body contient un user
