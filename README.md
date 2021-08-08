@@ -1,3 +1,5 @@
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/70a3b240bc3845ef9719d4e3ddca8839)](https://www.codacy.com/gh/EISAWESOME/game-room-server/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=EISAWESOME/game-room-server&amp;utm_campaign=Badge_Grade)
+
 # owo what's this
 
 This is a WIP of a game room server, not unlike what skribbl.io uses.
@@ -19,9 +21,7 @@ Install everything
 Run it
 > npm run debug
 
-
 ---
-
 ## TODO
 
 - Code d'erreur retour API + doc
