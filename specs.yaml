@@ -1,0 +1,147 @@
+swagger: '2.0'
+info:
+  version: '1.0'
+  title: Room Server
+  contact: {}
+host: '127.0.0.1:8080'
+basePath: /
+schemes:
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /create:
+    post:
+      summary: Create Room
+      tags:
+        - Endpoints
+      operationId: CreateRoom
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/CreateRoomRequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /list:
+    get:
+      summary: List room ids
+
+      tags:
+        - Endpoints
+      operationId: Listroomids
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: details
+          type: boolean
+          required: true
+          description: Whether to get details or only keys
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /join:
+    post:
+      summary: Join room
+      tags:
+        - Endpoints
+      operationId: Joinroom
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/JoinroomRequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  '/details/{roomId}':
+    get:
+      summary: Room Details
+      tags:
+        - Endpoints
+      operationId: RoomDetails
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: roomId
+          in: path
+          required: true
+          type: string
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+definitions:
+  CreateRoomRequest:
+    title: CreateRoomRequest
+    example:
+      gameId: 1
+      user:
+        id: 315L3B055
+        name: EIS LE BOSS
+    type: object
+    properties:
+      gameId:
+        type: number
+      user:
+        $ref: '#/definitions/User'
+
+    required:
+      - gameId
+  JoinroomRequest:
+    title: JoinroomRequest
+    example:
+      roomId: 08e3f2c2
+      users:
+        - id: '12346666'
+          name: EIS LE BIG BOSS
+        - id: '5678'
+          name: FEK14 LE BIG BOSS AUSSI
+    type: object
+    properties:
+      roomId:
+        type: string
+      users:
+        type: array
+        items:
+          $ref: '#/definitions/User'
+    required:
+      - roomId
+      - users
+  User:
+    title: User
+    example:
+      id: '12346666'
+      name: EIS LE BIG BOSS
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+    required:
+      - id
+      - name
+tags:
+  - name: Endpoints
+    description: ''

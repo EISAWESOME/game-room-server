@@ -1,4 +1,13 @@
 {
     "name" : "Room Server",
-    "version" : "0.0.1"
+    "version" : "0.0.2",
+
+    "rulesets" : [    
+        {
+            "gameId" : 1,
+            "gameName" : "Stack It",
+            "minRoomCapacity" : 2,
+            "maxRoomCapacity" : 10
+        }
+    ]
 }

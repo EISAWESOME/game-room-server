@@ -18,6 +18,8 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "eslint": "^7.32.0"
+    "eslint": "^7.32.0",
+    "http-server": "^13.0.0",
+    "nodemon": "^2.0.12"
   }
 }

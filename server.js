@@ -36,6 +36,7 @@ try {
     server.use(restify.plugins.bodyParser({
         mapParams: true
     }));
+    server.use(restify.plugins.queryParser());
 
     require('./routes/Hello.js')(server, serverCache);
     require('./routes/Create.js')(server, serverCache);
