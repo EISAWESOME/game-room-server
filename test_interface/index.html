@@ -31,6 +31,19 @@
 
     </div>
 
+    <div class="game">
+        <div>
+            Tu joues a quoi ?
+            <select ng-model="gameId">
+                <option value="1">StackIt</option>
+                <option value="2">Skribbl Duel</option>
+
+            </select>
+
+        </div>
+
+    </div>
+
     <div>Liste des rooms</div>
 
     <div class="button" ng-click="create()">Creer une nouvelle room</div>
@@ -38,7 +51,7 @@
     <div class="button" ng-click="list()">Refresh</div>
 
 
-    <div class="room-list" layout="row">        
+    <div class="room-list" layout="row">
 
         <div ng-repeat="r in rooms" class="room" layout="row">
 
@@ -53,11 +66,11 @@
                     <div>
                         {{r.ruleset.gameName}}
                     </div>
-    
+
                     <div>
                         {{r.ruleset.minRoomCapacity}} à {{r.ruleset.maxRoomCapacity}} joueurs
                     </div>
-    
+
                 </div>
 
                 <div class="button" ng-click="join(r)">

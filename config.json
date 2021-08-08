@@ -8,6 +8,12 @@
             "gameName" : "Stack It",
             "minRoomCapacity" : 2,
             "maxRoomCapacity" : 10
+        },
+        {
+            "gameId" : 2,
+            "gameName" : "Skribbl Duel",
+            "minRoomCapacity" : 2,
+            "maxRoomCapacity" : 2
         }
     ]
 }

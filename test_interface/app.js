@@ -20,9 +20,11 @@ angular.module('TestApp', ['ngMaterial', 'ngMessages']).controller("ctrl", funct
         name: "Testeur"
     };
 
+    $scope.gameId = "1";
+
     $scope.create = () => {
         $http.post(SERVER_URL + "/create", {
-            gameId: 1,
+            gameId: Number($scope.gameId),
             user: $scope.user
         }).then(() => {
 
