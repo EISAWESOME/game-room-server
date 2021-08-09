@@ -10,10 +10,6 @@ const log = bunyan.createLogger({
     name: "RoomServer"
 });
 
-// Key - Value store
-const NodeCache = require("node-cache");
-const serverCache = new NodeCache();
-
 try {
 
 
@@ -38,12 +34,12 @@ try {
     }));
     server.use(restify.plugins.queryParser());
 
-    require('./routes/Hello.js')(server, serverCache);
-    require('./routes/Create.js')(server, serverCache, config);
-    require('./routes/Join.js')(server, serverCache);
-    require('./routes/Details.js')(server, serverCache);
+    require('./routes/Hello.js')(server);
+    require('./routes/Create.js')(server, config);
+    require('./routes/Join.js')(server);
+    require('./routes/Details.js')(server);
 
-    require('./routes/List.js')(server, serverCache);
+    require('./routes/List.js')(server);
 
 
 

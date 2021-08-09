@@ -43,9 +43,7 @@ angular.module('TestApp', ['ngMaterial', 'ngMessages']).controller("ctrl", funct
                     $scope.rooms.push(value);
 
                 }
-
             }
-
         })
 
     }

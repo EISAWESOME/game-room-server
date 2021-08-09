@@ -1,6 +1,8 @@
 'use strict';
 
-const handler = function Create(server, cache) {
+const storageService = require('../services/storageService.js');
+
+const handler = function Create(server) {
     server.post('/join', function (req, res, next) {
 
 
@@ -8,7 +10,8 @@ const handler = function Create(server, cache) {
 
         if (body) {
 
-            let roomInCache = cache.get(`ROOM_${body.roomId}`);
+            let roomInCache = storageService.getRoom(body.roomId)
+            //let roomInCache = cache.get(`ROOM_${body.roomId}`);
             if (roomInCache) {
 
                 // Si on trouve la room, on y ajoute les users qui ne sont pas déja présent dans cette room
@@ -21,7 +24,9 @@ const handler = function Create(server, cache) {
 
                     if(canAddUsers) {
                         roomInCache.users.push(...usersNotAlreadyInRoom);
-                        cache.set(`ROOM_${roomInCache.id}`, roomInCache)
+
+                        storageService.updateRoom(roomInCache);
+                        //cache.set(`ROOM_${roomInCache.id}`, roomInCache)
                         res.send(200, {
                             message : `Users ${usersNotAlreadyInRoom.map(u => u.name).join(', ')} joined the room #${roomInCache.id}`,
                             data : roomInCache

@@ -1,12 +1,13 @@
 'use strict';
 
+const storageService = require('../services/storageService.js');
 const Room = require('../classes/Room');
 const User = require('../classes/User');
 const {
     v4: uuidv4
 } = require('uuid');
 const sum = require('hash-sum');
-const handler = function Create(server, cache, config) {
+const handler = function Create(server, config) {
     server.post('/create', function (req, res, next) {
 
         let body = req.params;
@@ -29,7 +30,9 @@ const handler = function Create(server, cache, config) {
                     room.users.push(user);
                 }
 
-                let success = cache.set(`ROOM_${room.id}`, room, 10000);
+
+                let success = storageService.createRoom(room)
+                //let success = cache.set(`ROOM_${room.id}`, room, 10000);
 
                 if (success) {
                     res.send(200, {

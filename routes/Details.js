@@ -1,6 +1,8 @@
 'use strict';
 
-const handler = function Details(server, cache) {
+const storageService = require('../services/storageService.js');
+
+const handler = function Details(server) {
     server.get('/details/:roomId', function (req, res, next) {
 
 
@@ -8,7 +10,8 @@ const handler = function Details(server, cache) {
 
         if (requestedRoomId) {
 
-            let roomInCache = cache.get(`ROOM_${requestedRoomId}`);
+            let roomInCache = storageService.getRoom(requestedRoomId);
+            //let roomInCache = cache.get(`ROOM_${requestedRoomId}`);
             if (roomInCache) {
 
                 res.send(200, roomInCache);
